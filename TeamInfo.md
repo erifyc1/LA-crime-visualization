@@ -9,10 +9,10 @@
 
 |   Role      |        Name            |         Email           |
 | ----------- | ---------------------- | ----------------------- |
-|   role tbd  |       Alex Capps       |  amcapps2@illinois.edu  |
-|   role tbd  |     Alex Ostrowski     |    ao11@illinois.edu    |
-|   role tbd  |      Tianshun Gao      |   tgao13@illinois.edu   |
-|   role tbd  |     Jacob Stolker      |  stolker2@illinois.edu  |
+|    Member   |       Alex Capps       |  amcapps2@illinois.edu  |
+|    Member   |     Alex Ostrowski     |    ao11@illinois.edu    |
+|    Member   |      Tianshun Gao      |   tgao13@illinois.edu   |
+|    Captain  |     Jacob Stolker      |  stolker2@illinois.edu  |
 
 
 ## Project Information
