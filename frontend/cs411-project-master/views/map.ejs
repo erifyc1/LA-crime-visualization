@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Los Angeles Crime Map</title>
+        <script src="https://maps.googleapis.com/maps/api/js?key=<%= apiKey %>"></script>
+        <script src="https://cdn.rawgit.com/googlemaps/js-marker-clusterer/gh-pages/src/markerclusterer.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            var map;
+            var markers = [];
+            var clusterer;
+            // var count = 0;
+            var clusterOptions = {
+                imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m',
+                maxZoom: 15
+            };
+            function initMap() {
+                var myLatLng = {lat: 34.052235, lng: -118.243683}; // Coordinates for Los Angeles
+                map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 8,
+                center: myLatLng // set the center of the map
+                });
+
+                // create marker clusterer and add markers to it
+                clusterer = new MarkerClusterer(map, [], clusterOptions);
+            }
+            function addMarker(locationData) {
+                var contentString = '<div><strong>DR NO:</strong> ' + locationData["DR_NO"] + '</div>' +
+                            '<div><strong>DATE OCC:</strong> ' + locationData["DATE OCC"] + '</div>' +
+                            '<div><strong>TIME OCC:</strong> ' + locationData["TIME OCC"] + '</div>' +
+                            '<div><strong>Address:</strong> ' + locationData["LOCATION"] + '</div>' +
+                            '<div><strong>Crm Cd Desc:</strong> ' + locationData["Crm Cd Desc"] + '</div>' +
+                            '<div><strong>Vict Age:</strong> ' + locationData["Vict Age"] + '</div>' +
+                            '<div><strong>Vict Sex:</strong> ' + locationData["Vict Sex"] + '</div>';
+
+                var marker = new google.maps.Marker({
+                    position: { lat: locationData[i]["LAT"], lng: locationData[i]["LON"] },
+                    map: map
+                });
+
+                addInfoWindow(marker, contentString);
+                markers.push(marker);
+                clusterer.addMarkers(marker);
+                // count++;
+                // if (count === 1000) {
+                //     count = 0;
+                //     clusterer.clearMarkers();
+                //     clusterer.addMarkers(markers);
+                // }
+            }
+            function addAllMarkers() {
+                // loop through location data and create markers
+                <% for (var i = 0; i < locationData.length; i++) { %>
+                    // define content for info window
+                    var contentString = '<div><strong>DR NO:</strong> <%= locationData[i]["DR_NO"] %></div>' +
+                                        '<div><strong>DATE OCC:</strong> <%= locationData[i]["DATE OCC"] %></div>' +
+                                        '<div><strong>TIME OCC:</strong> <%= locationData[i]["TIME OCC"] %></div>' +
+                                        '<div><strong>Address:</strong> <%= locationData[i]["LOCATION"] %></div>' +
+                                        '<div><strong>Crm Cd Desc:</strong> <%= locationData[i]["Crm Cd Desc"] %></div>' +
+                                        '<div><strong>Vict Age:</strong> <%= locationData[i]["Vict Age"] %></div>' +
+                                        '<div><strong>Vict Sex:</strong> <%= locationData[i]["Vict Sex"] %></div>';
+
+                    var marker = new google.maps.Marker({
+                        position: { lat: <%= locationData[i]["LAT"] %>, lng: <%= locationData[i]["LON"] %> },
+                        map: map
+                    });
+
+                    addInfoWindow(marker, contentString);
+
+                    markers.push(marker);
+                <% } %>
+
+                clusterer.addMarkers(markers);
+            }
+            function addInfoWindow(marker, content) {
+                var infoWindow = new google.maps.InfoWindow({
+                    content: content
+                });
+
+                marker.addListener('click', function() {
+                    infoWindow.open({anchor: marker, map});
+                });
+            }
+        </script>
+    </head>
+    <body onload="initMap(); addAllMarkers()">
+        <div id="map" style="width: 100%; height: 100%"></div>
+    </body>
+</html>

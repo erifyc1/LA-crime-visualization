@@ -5,11 +5,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+      #table-container {
+        margin-bottom: 20px;
+      }
+      #map-container {
+        height: 1000px;
+      }
+    </style>
   </head>
 
   <body>
 
-    <div class="container mt-4">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="#">Crime in LA</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-labe>
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/advanced1">Advanced 1</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/advanced2">Advanced 2</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/modify-data">Modify Data</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container mt-4" id="table-container">
       <div class="card">
         <div class="card-body">
           <h2>Number of Incidents by Area Name</h2>
@@ -32,7 +65,11 @@
         </div>
       </div>
     </div>
-
+<hr>
+    <div class="container mt-4" id="map-container">
+          <% include map.ejs %>
+    </div>
+<hr>
   </body>
 </html>
 

@@ -1,38 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Advanced 2</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  </head>
+<head>
+  <title>Month Year Search</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #F7F7F7;
+      font-family: 'Helvetica Neue', sans-serif;
+      color: #333333;
+    }
+    .card {
+      background-color: #FFFFFF;
+      border-radius: 15px;
+      box-shadow: 0px 2px 6px #BDBDBD;
+      margin-bottom: 20px;
+      color: #333333;
+    }
+    .card-title {
+      color: #333333;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .form-control:focus {
+      border-color: #007AFF;
+      box-shadow: none;
+      color: #333333;
+      background-color: #F7F7F7;
+    }
+    .btn-primary {
+      background-color: #007AFF;
+      border-color: #007AFF;
+      font-weight: bold;
+    }
+    .btn-primary:hover {
+      background-color: #0062cc;
+      border-color: #0062cc;
+    }
+    .navbar-brand {
+      color: #333333;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .navbar-nav .nav-link {
+      color: #333333;
+      font-weight: bold;
+    }
+    .navbar-nav .nav-link:hover {
+      color: #007AFF;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
 
-  <body>
+    th, td {
+      text-align: left;
+      padding: 8px;
+      border: 1px solid black;
+    }
 
-    <div class="container mt-4">
-      <div class="card">
-        <div class="card-body">
-          <h2>Crime Data by LAPD Area in the year 2021</h2>
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th>Area Name</th>
-                <th>Number of Crimes</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% for (let i = 0; i < results.length; i++) { %>
-                <tr>
-                  <td><%= results[i].AreaName %></td>
-                  <td><%= results[i].NumCrimes %></td>
-                </tr>
-              <% } %>
-            </tbody>
-          </table>
+    th {
+      background-color: #4CAF50;
+      color: black;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Crime in LA</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" ari>
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+             <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/modify-data">Modify Data</a>
+            </li>
+          </ul>
         </div>
       </div>
-    </div>
-
-  </body>
+    </nav>
+  <div class="card">
+  <div class="card-body">
+    <h2>Number of Crimes in a Given Month and Year</h2>
+    <form action="/advanced2" method="GET">
+      <div class="form-group">
+        <label for="year">Year:</label>
+        <select id="year" name="year" class="form-control" required>
+          <option value="" selected disabled>Select a year</option>
+          <option value="2020">2020</option>
+          <option value="2021">2021</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="month">Month:</label>
+        <select id="month" name="month" class="form-control" required>
+          <option value="" selected disabled>Select a month</option>
+          <option value="01">January</option>
+          <option value="02">February</option>
+          <option value="03">March</option>
+          <option value="04">April</option>
+          <option value="05">May</option>
+          <option value="06">June</option>
+          <option value="07">July</option>
+          <option value="08">August</option>
+          <option value="09">September</option>
+          <option value="10">October</option>
+          <option value="11">November</option>
+          <option value="12">December</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Find</button>
+    </form>
+    <% if (typeof results !== 'undefined') { %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Area Name</th>
+          <th>Crime Rate</th>
+          <th>Number of Crimes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% results.forEach(function(entry) { %>
+        <tr>
+          <td><%= entry.AreaName %></td>
+          <td><%= entry.CrimeRate %></td>
+          <td><%= entry.NumCrimes %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+    <% } %>
+  </div>
+</div>
+</body>
 </html>
 

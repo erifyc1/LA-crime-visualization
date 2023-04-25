@@ -1,75 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
- <head>
-   <title>Attendance System</title>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
- </head>
-
- <body>
- 
- <div class="container mt-4">
-     <div class="card">
+  <head>
+    <title>Crime in LA</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css">
+    <script src="map.ejs"></script>
+    <style>
+      body {
+        background-color: #F7F7F7;
+        font-family: 'Helvetica Neue', sans-serif;
+        color: #333333;
+      }
+      .card {
+        background-color: #FFFFFF;
+        border-radius: 15px;
+        box-shadow: 0px 2px 6px #BDBDBD;
+        margin-bottom: 20px;
+        color: #333333;
+      }
+      .card-title {
+        color: #333333;
+        font-size: 24px;
+        font-weight: bold;
+      }
+      .form-control:focus {
+        border-color: #007AFF;
+        box-shadow: none;
+        color: #333333;
+        background-color: #F7F7F7;
+      }
+      .btn-primary {
+        background-color: #007AFF;
+        border-color: #007AFF;
+        font-weight: bold;
+      }
+      .btn-primary:hover {
+        background-color: #0062cc;
+        border-color: #0062cc;
+      }
+      .navbar-brand {
+        color: #333333;
+        font-size: 24px;
+        font-weight: bold;
+      }
+      .navbar-nav .nav-link {
+        color: #333333;
+        font-weight: bold;
+      }
+      .navbar-nav .nav-link:hover {
+        color: #007AFF;
+      }
+    </style>
+  </head>
+  <body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Crime in LA</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+	    <li class="nav-item">
+             <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/modify-data">Modify Data</a>
+            </li>
+	    <li class="nav-item">
+             <a class="nav-link" href="/advanced1">Crime Area Overview</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+ <div class="container mt-4 d-flex flex-wrap">
+    <div class="row">
+     <div class="card col-12 ">
        <div class="card-body">
-         <h2>Insert New Records</h2>
-         <form action="inserts" method="POST">
-           <div class="form-group">
-             <label for="input">dRNumber, time, date, code, address</label>
-             <input type="text" class="form-control col-lg-9" id="input" aria-describedby="emailHelp" placeholder="dRNumber, time, date, code, address" name="input">
-           </div>
-           <button type="submit" class="btn btn-primary">Submit</button>
-         </form>
-   </div>
-     <div class="card">
-       <div class="card-body">
-         <h2>Search Based off of Date</h2>
-         <form action="search" method="GET">
-           <div class="form-group">
-             <label for="date">xx/xx/xx</label>
-             <input type="text" class="form-control col-lg-9" id="search" aria-describedby="emailHelp" placeholder="MM/DD/YY" name="date">
-           </div>
-           <button type="submit" class="btn btn-primary">Submit</button>
-         </form>
-   </div>
-     <div class="card">
-       <div class="card-body">
-         <h2>Update Incident Address</h2>
-         <form action="update" method="GET">
-           <div class="form-group">
-             <label for="address">NewAddress,OldAddress</label>
-             <input type="text" class="form-control col-lg-9" id="address" aria-describedby="emailHelp" placeholder="NewName,OldName" name="address">
-           </div>
-           <button type="submit" class="btn btn-primary">Submit</button>
-         </form>
-   </div>
-  <div class="card">
-       <div class="card-body">
-         <h2>Delete Incident Based off of Code</h2>
-         <form action="delete" method="GET">
-           <div class="form-group">
-             <label for="code">code</label>
-             <input type="text" class="form-control col-lg-9" id="code" aria-describedby="emailHelp" placeholder="code" name="code">
-           </div>
-           <button type="submit" class="btn btn-primary">Submit</button>
-         </form>
-   </div>
-  <div class="card">
-  <div class="card-body">
-    <h2>Count the number of incidents of crime in each area ordered by most to least</h2>
-     <form action="advanced1" method="GET">
-    <p>Count the number of incidents of crime in each area ordered by most to least.</p>
-    <button type="button" class="btn btn-primary" onclick="window.location.href='/advanced1'">Find</button>
+    <h2>Search for an Incident</h2>
+    <form action="search" method="GET">
+      <div class="form-group">
+        <label for="search-type">Search by:</label>
+        <select class="form-control" id="search-type" name="searchBy">
+          <option value="Code">Code</option>
+          <option value="Date">Date</option>
+          <option value="Address">Address</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="search-term">Search term:</label>
+        <input type="text" class="form-control" id="search-term" name="query">
+      </div>
+      <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Search</button>
+    </form>
   </div>
 </div>
+
 <div class="card">
   <div class="card-body">
-    <h2>Number of Crimes in the Year 2021</h2>
-     <form action="advanced2" method="GET">
-    <p>Number of Crimes in the Year 2021.</p>
-    <button type="button" class="btn btn-primary" onclick="window.location.href='/advanced2'">Find</button>
+    <h2>Number of Crimes in a Given Month and Year</h2>
+    <form action="advanced2" method="GET">
+      <div class="form-group">
+        <label for="month">Month:</label>
+        <select class="form-control" id="month" name="month" required>
+          <option value="" disabled selected>Select Month</option>
+          <option value="1">January</option>
+          <option value="2">February</option>
+          <option value="3">March</option>
+          <option value="4">April</option>
+          <option value="5">May</option>
+          <option value="6">June</option>
+          <option value="7">July</option>
+          <option value="8">August</option>
+          <option value="9">September</option>
+          <option value="10">October</option>
+          <option value="11">November</option>
+          <option value="12">December</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="year">Year:</label>
+        <select class="form-control" id="year" name="year" required>
+          <option value="" disabled selected>Select Year</option>
+          <option value="2020">2020</option>
+          <option value="2021">2021</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Find</button>
+    </form>
   </div>
 </div>
+<script>
+  const homeLink = document.querySelector('#home-link');
+  homeLink.addEventListener('click', (event) => {
+    event.preventDefault();
+    window.location.href = '/';
+  });
+</script>
+
  </div>
  </body>
 </html>

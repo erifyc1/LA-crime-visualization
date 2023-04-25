@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+   <title>Attendance System</title>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+ </head>
+
+ <body>
+ 
+ <div class="container mt-4">
+     <div class="card">
+       <div class="card-body">
+         <h2>Insert New Records</h2>
+         <form action="inserts" method="POST">
+           <div class="form-group">
+             <label for="input">dRNumber, time, date, code, address</label>
+             <input type="text" class="form-control col-lg-9" id="input" aria-describedby="emailHelp" placeholder="dRNumber, time, date, code, address" name="input">
+           </div>
+           <button type="submit" class="btn btn-primary">Submit</button>
+         </form>
+   </div>
+     <div class="card">
+       <div class="card-body">
+         <h2>Update Incident Address</h2>
+         <form action="update" method="GET">
+           <div class="form-group">
+             <label for="address">NewAddress,OldAddress</label>
+             <input type="text" class="form-control col-lg-9" id="address" aria-describedby="emailHelp" placeholder="NewName,OldName" name="address">
+           </div>
+           <button type="submit" class="btn btn-primary">Submit</button>
+         </form>
+   </div>
+  <div class="card">
+       <div class="card-body">
+         <h2>Delete Incident Based off of Code</h2>
+         <form action="delete" method="GET">
+           <div class="form-group">
+             <label for="code">code</label>
+             <input type="text" class="form-control col-lg-9" id="code" aria-describedby="emailHelp" placeholder="code" name="code">
+           </div>
+           <button type="submit" class="btn btn-primary">Submit</button>
+         </form>
+   </div>
+<div class="card">
+  <div class="card-body">
+    <h2>Search Based off of Code</h2>
+    <form action="search" method="GET">
+      <div class="form-group">
+        <label for="search-type">Search by:</label>
+        <select class="form-control" id="search-type" name="searchBy">
+          <option value="Code">Code</option>
+          <option value="Date">Date</option>
+          <option value="Address">Address</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="search-term">Search term:</label>
+        <input type="text" class="form-control" id="search-term" name="query">
+      </div>
+      <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+  </div>
+</div>
+
+  <div class="card">
+  <div class="card-body">
+    <h2>Count the number of incidents of crime in each area ordered by most to least</h2>
+     <form action="advanced1" method="GET">
+    <p>Count the number of incidents of crime in each area ordered by most to least.</p>
+    <button type="button" class="btn btn-primary" onclick="window.location.href='/advanced1'">Find</button>
+  </div>
+</div>
+<div class="card">
+  <div class="card-body">
+    <h2>Number of Crimes in a Given Year</h2>
+     <form action="advanced2" method="GET">
+      <div class="form-group">
+        <label for="year">Year:</label>
+        <input type="number" class="form-control" id="year" name="year" min="1900" max="2099" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Find</button>
+    </form>
+  </div>
+</div>
+<div class="card">
+  <div class="card-body">
+    <h2>Number of Crimes in a Given Year</h2>
+     <form action="advanced2" method="GET">
+      <div class="form-group">
+        <label for="year">Year:</label>
+        <input type="number" class="form-control" id="year" name="year" min="1900" max="2099" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Find</button>
+    </form>
+  </div>
+</div>
+
+ </div>
+ </body>
+</html>
