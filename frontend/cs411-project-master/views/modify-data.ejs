@@ -75,34 +75,34 @@
     <div class="row">
      <div class="card col-12 ">
        <div class="card-body">
-         <h2>Insert New Records</h2>
+         <h2>Add a New Record</h2>
          <form action="inserts" method="POST">
            <div class="form-group">
-             <label for="input">dRNumber, time, date, code, address</label>
-             <input type="text" class="form-control col-lg-9" id="input" aria-describedby="emailHelp" placeholder="dRNumber, time, date, code, address" name="input">
+             <label for="input">Please Insert the data as: dRNumber,time,date,code,address</label>
+             <input type="text" class="form-control col-lg-9" id="input" aria-describedby="emailHelp" placeholder="dRNumber,time,date,code,address" name="input">
            </div>
-           <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Submit</button>
+           <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Add</button>
          </form>
    </div> </div>
 <div class="card">
        <div class="card-body">
-         <h2>Update Incident Address</h2>
+         <h2>Change an Address for an Incident</h2>
          <form action="update" method="GET">
            <div class="form-group">
-             <label for="address">NewAddress,OldAddress</label>
+             <label for="address">Please give the new address and old address that you want as: NewAddress,OldAddress</label>
              <input type="text" class="form-control col-lg-9" id="address" aria-describedby="emailHelp" placeholder="NewName,OldName" name="address">
            </div>
-           <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Submit</button>
+           <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Change</button>
          </form>
    </div> </div>
   <div class="card">
        <div class="card-body">
-         <h2>Delete Incident Based off of Code</h2>
+         <h2>Remove an Incident Based off of Code</h2>
          <form action="delete" method="GET">
            <div class="form-group">
-             <label for="code">code</label>
+             <label for="code"></label>
              <input type="text" class="form-control col-lg-9" id="code" aria-describedby="emailHelp" placeholder="code" name="code">
            </div>
-           <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Submit</button>
+           <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Remove</button>
          </form>
    </div> </div>
