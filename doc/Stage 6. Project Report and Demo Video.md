@@ -1,7 +1,7 @@
 
 # Stage 6 Project Report and Video
 
-[Final Demo Video](https://youtu.be/sGEus_fs5qk)
+Video: [Final Demo Video](https://youtu.be/sGEus_fs5qk)
 
 1. **Please list out changes in the directions of your project if the final project is different from your original proposal (based on your stage 1 proposal submission).**
     * We pretty much stuck to our original proposal except for some implementation details. We used the data set from Kaggle on crimes in Los Angeles. We then splitted it into six tables, which are Crime, Area, Location, Incident, District and Victim, to store relevant information. We implemented a google map showing all crime incidents as our creative component like we proposed, but we underestimated technical difficulties for some features that we proposed in the first stage, like filtering crimes on the map in terms of attributes.
