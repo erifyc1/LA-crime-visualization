@@ -1,6 +1,4 @@
----
-title: Midterm Demo
----
+
 ## Data Definition Language (DDL)
 <pre>
 CREATE TABLE Crime (
