@@ -1,6 +1,4 @@
----
-title: Stage 6. Project Report and Demo Video
----
+
 # Stage 6 Project Report and Video
 
 [Final Demo Video](https://youtu.be/sGEus_fs5qk)
