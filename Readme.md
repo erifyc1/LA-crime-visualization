@@ -1,7 +1,8 @@
 # LA Crime Visualization (by team106-dblegends)
 CS411 project repository
 
-[web url](http://35.209.15.193/)
+* [web url](http://35.209.15.193/)
+* [final demo video](https://youtu.be/sGEus_fs5qk)
 
 ## Permission
 You should make sure you allow TAs to access your repository. You can add TA(s) as a collaborator to your repository.
