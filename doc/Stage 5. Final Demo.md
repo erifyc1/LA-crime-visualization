@@ -1,6 +1,4 @@
----
-title: Final Demo
----
+
 # Final Demo
 
 1. **Clear demo presentation. Arriving on time and completing the presentation within the given time frame (details will come at a later time on campuswire). (+1%)**
