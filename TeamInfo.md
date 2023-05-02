@@ -20,8 +20,8 @@
 |   Info      |        Description     |
 | ----------- | ---------------------- |
 |  Title      |       LA Crime Visualization     |
-| System URL  |      link_to_system    |
-| Video Link  |      link_to_video     |
+| System URL  |      [link_to_system](http://35.209.15.193/)    |
+| Video Link  |      [link_to_video](https://youtu.be/sGEus_fs5qk)     |
 
 ## Project Summary
 
